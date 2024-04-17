@@ -1,0 +1,14 @@
+
+.contact-link {
+    font-size: 20px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8); /* Color blanco opaco */
+    transition: all 0.3s ease; /* Transición suave de 0.3 segundos */
+}
+
+.contact-link:hover {
+    color: #fff; /* Cambiar color a blanco puro al hacer hover */
+    transform: translateX(15px);
+    font-size: 22px; /* Mover el texto 5px a la derecha al hacer hover */
+}
+
