@@ -1,14 +1,61 @@
+body {
+  background-color: #f4f4f4;
+  font-family: "Arial", sans-serif;
+}
 
 .contact-link {
-    font-size: 20px;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.8); /* Color blanco opaco */
-    transition: all 0.3s ease; /* Transición suave de 0.3 segundos */
+  font-size: 20px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
 }
 
 .contact-link:hover {
-    color: #fff; /* Cambiar color a blanco puro al hacer hover */
-    transform: translateX(15px);
-    font-size: 22px; /* Mover el texto 5px a la derecha al hacer hover */
+  color: #fff;
+  transform: translateX(15px);
+  font-size: 22px;
 }
 
+#loginForm {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 400px;
+  margin: auto;
+}
+
+button[type="submit"] {
+  background-color: #ffc107;
+  color: #333;
+  padding: 12px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #e0a800;
+}
+
+#registerForm {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 500px; /* Ajustar según el contenido más amplio */
+  margin: auto;
+}
+
+button[type="submit"] {
+  background-color: #ffc107;
+  color: #333;
+  padding: 12px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

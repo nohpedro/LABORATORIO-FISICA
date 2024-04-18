@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $query = "INSERT INTO Administrador (ca, password, nombre, apellido, carnet, rol) VALUES (?, ?, ?, ?, ?, ?)";
         executeQuery($query, [$ca, $hashed_password, $nombre, $apellido, $carnet, $rol]);
-        echo "Administrador registrado con éxito.";
+        echo "Registro con éxito.";
     }
 }
 ?>
