@@ -91,3 +91,45 @@ button[type="submit"]:hover {
     font-size: 16px;
   }
 }
+
+.nav_bar_title{
+  font-size: 2.5em;           /* Adjust font size */
+    font-weight: bold;          /* Bold font weight */
+    color: #333;               /* Text color */
+    text-align: center;        /* Center align text */
+    margin-bottom: 20px;       /* Add some space at the bottom */
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat font */
+    text-decoration: none;     /* Remove underline */
+    letter-spacing: 0px;  
+}
+
+.map-container {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+  height: 0;
+}
+
+
+/* WhatsApp Button Styles */
+.whatsapp-btn {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: transparent; 
+  opacity: 0.9;/* WhatsApp green */
+  color: #fff;
+  font-size: 16px;
+  padding: 15px 25px;
+  border-radius: 50px;
+  text-align: center;
+  text-decoration: none;
+  z-index: 1000; /* Ensure it appears above other elements */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-btn:hover {
+  background-color: #000000;
+  opacity: 1; /* Darker shade of WhatsApp green */
+}
