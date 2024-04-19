@@ -1,4 +1,4 @@
-# 🥼 LABORATORIO-FISICA 
+# 🥼 Sistema Web de Gestión de préstamos de Equipos de la Universidad Católica Boliviana 
 
 Es un sistema para el préstamo de equipos, inventario y registro de uso de aulas para el laboratorio de física que se encuentra en el bloque “C”de la Universidad Católica San Pablo
 
