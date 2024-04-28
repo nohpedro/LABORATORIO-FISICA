@@ -1,7 +1,7 @@
 <?php
 function getDB() {
     $host = 'localhost';
-    $dbName = 'laboratorio_fisica';
+    $dbName = 'prestamo_lab_pru';
     $user = 'root';
     $password = ''; // Asegúrate de usar la contraseña correcta para tu entorno de desarrollo
 
