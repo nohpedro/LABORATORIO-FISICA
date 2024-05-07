@@ -1,9 +1,9 @@
 <?php
 function getDB() {
     $host = 'localhost';
-    $dbName = 'prestamo_lab_pru';
+    $dbName = 'laboratorio_fisica'; // Aqui va el nombre de la bd
     $user = 'root';
-    $password = ''; // Asegúrate de usar la contraseña correcta para tu entorno de desarrollo
+    $password = ''; 
 
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbName", $user, $password);

@@ -1,20 +1,19 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.getElementById('registerForm');
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("registerForm");
 
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const formData = new FormData(form);
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
 
-        fetch('../php/register.php', {
-            
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            alert(data);  // Muestra un mensaje con la respuesta del servidor
-            form.reset(); // Reinicia el formulario después del registro
-        })
-        .catch(error => console.error('Error:', error));
-    });
+    fetch("../php/register.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        alert(data);
+        form.reset();
+      })
+      .catch((error) => console.error("Error:", error));
+  });
 });

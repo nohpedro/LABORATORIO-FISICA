@@ -1,9 +1,10 @@
 <?php
+session_start(); 
 require_once 'functions.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ca = $_POST['ca'];
-    $password = $_POST['password']; // Recibiendo la contraseña desde el formulario
+    $password = $_POST['password']; 
 
     $query = "SELECT * FROM Administrador WHERE ca = ?";
     $stmt = executeQuery($query, [$ca]);
@@ -13,7 +14,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Verificar la contraseña encriptada
         if (password_verify($password, $admin['password'])) {
-            echo "Bienvenido, " . $admin['nombre'];
+            // Establecer variables de sesión
+            $_SESSION['loggedin'] = true;
+            $_SESSION['ca'] = $admin['ca'];
+            $_SESSION['nombre'] = $admin['nombre'];
+            $_SESSION['rol'] = $admin['rol'];
+
+            echo "Bienvenido ," . $admin['nombre'];
         } else {
             echo "Contraseña incorrecta";
         }
@@ -22,5 +29,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-
