@@ -1,7 +1,11 @@
 <?php
 function getDB() {
     $host = 'localhost';
+<<<<<<< HEAD
     $dbName = 'laboratorio_fisica'; // Aqui va el nombre de la bd
+=======
+    $dbName = 'prestamo_lab_pru';
+>>>>>>> pedro_jr
     $user = 'root';
     $password = ''; 
 
