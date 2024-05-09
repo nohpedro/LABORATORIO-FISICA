@@ -3,6 +3,10 @@ body {
   font-family: "Arial", sans-serif;
 }
 
+.bg-custom {
+  background-color: #0770BC !important;
+}
+
 .contact-link {
   font-size: 20px;
   text-decoration: none;
@@ -90,4 +94,8 @@ button[type="submit"]:hover {
     padding: 12px;
     font-size: 16px;
   }
+}
+.border-navigator{
+  margin: 25px 50px;
+  border-radius: 30px;
 }

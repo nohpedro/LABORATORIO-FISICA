@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $carnet = $_POST['carnet'];
+    $correo = $_POST['correo'];
     $rol = $_POST['rol'];
 
    
@@ -18,8 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $query = "INSERT INTO Administrador (ca, password, nombre, apellido, carnet, rol) VALUES (?, ?, ?, ?, ?, ?)";
-        executeQuery($query, [$ca, $hashed_password, $nombre, $apellido, $carnet, $rol]);
+        $query = "INSERT INTO Administrador (ca, password, nombre, apellido, carnet, rol,correo) VALUES (?, ?, ?, ?, ?, ?,?)";
+        executeQuery($query, [$ca, $hashed_password, $nombre, $apellido, $carnet, $rol,$correo]);
         echo "Registro con éxito.";
     }
 }
