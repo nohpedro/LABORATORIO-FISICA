@@ -1,6 +1,6 @@
-// Este script carga el navbar de un archivo HTML y lo inserta en la página.
+// This script loads the navbar from an HTML file and inserts it into the page.
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("../includes/navbar.html")
+  fetch("navbar.html")
     .then((response) => response.text())
     .then((data) => {
       document.body.insertAdjacentHTML("afterbegin", data);
