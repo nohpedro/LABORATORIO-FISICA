@@ -1,7 +1,7 @@
 
 
 //Priemro obtener la ruta
-const url = new URL('AquiValaruta')
+const url = new URL('http://127.0.0.1:8000/api/user/list/')
 
 const searchParams = url.searchParams
 
