@@ -159,6 +159,7 @@ class CreateTokenView(ObtainAuthToken):
         logIn(user)
         return Response({'token': token.key})
 
+
 class LogoutView(generics.GenericAPIView):
     serializer_class = serializers.Serializer
     authentication_classes = [authentication.TokenAuthentication]

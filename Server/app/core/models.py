@@ -178,6 +178,7 @@ class Session(models.Model):
     user = models.ForeignKey(get_user_model(), null=False, blank=False, on_delete=models.CASCADE)
     login_time = models.DateTimeField(auto_now_add=True)
     logout_time =  models.DateTimeField(null=True, blank=True)
+    #session_key = models.CharField(max_length=255,  null=False, blank=True)
 
 
 def get_last_session(user):
