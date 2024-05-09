@@ -9,16 +9,19 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="../js/include_navbar.js"></script>
+  <script src="../js/include_footer.js"></script>
+
 
   <title>Página de Física</title>
 </head>
 
 <body>
 
-  <div class="container">
+  <div class="container-fluid">
     <div id="pagina-de-inicio">
-      <h1 class="display-1 text-center">Pagina de Inicio</h1>
+      <h1 class="display-1 text-center animate__animated animate__fadeIn">Pagina de Inicio</h1>
       <br>
     </div>
 
@@ -31,15 +34,16 @@
               <div class="row">
                 <!-- Columna para la imagen, que se coloca arriba en pantallas pequeñas -->
                 <div class="col-md-4 col-12">
-                  <img src="../public/img/ucb.png" alt="Descripción de la imagen" class="img-fluid">
+                  <img src="../public/img/ucb.png" alt="Descripción de la imagen" class="img-fluid animate__animated animate__backInLeft">
                 </div>
                 <!-- Columna para el texto, que sigue a la imagen en pantallas pequeñas -->
                 <div class="col-md-8 col-12">
-                  <h1>Bienvenido</h1>
-                  <p>En el Laboratorio de la Universidad Catolica Boliviana, esatmos comprometidos con al excelencia
+                  <h1 class="display-4 animate__animated animate__fadeIn">Bienvenido!</h1>
+                  
+                  <p class="text-md-center" style="font-size: 24px;">En el Laboratorio de la Universidad Catolica Boliviana, esatmos comprometidos con al excelencia
                     academica y
                     la investigacion.</p>
-                  <p>Nuestro Laboratorio ofrece una gama de materiales y recursos para apoyar el desarrollo de proyectos
+                  <p  class="text-md-center" style="font-size: 24px;">Nuestro Laboratorio ofrece una gama de materiales y recursos para apoyar el desarrollo de proyectos
                     cientificos y academicos.</p>
                 </div>
               </div>
@@ -70,53 +74,7 @@
 
 
 
-  <footer class="bg-dark text-light py-5">
-    <div class="container">
-      <div class="row">
-        <!-- Posición izquierda -->
-        <div class="col-md-4">
-          <h3><i class="bi bi-person-circle"></i> Contacto:</h3>
-          <br/>
-          <ul class="list-unstyled">
-            <li>
-              <a href="#" class="contact-link"><i class="bi bi-facebook"></i> Página de Facebook</a>
-            </li>
-            <li>
-              <a href="#" class="contact-link"><i class="bi bi-instagram"></i> Página de Instagram</a>
-            </li>
-            <li>
-              <a href="#" class="contact-link"><i class="bi bi-envelope"></i> Correo</a>
-            </li>
-            <li>
-              <a href="#" class="contact-link"><i class="bi bi-whatsapp"></i> Whatsapp</a>
-            </li>
-          </ul>
-        </div>
 
-        <!-- Posición centro -->
-        <div class="col-md-4">
-          <h3><i class="bi bi-geo-alt-fill"></i> Dirección:</h3>
-
-          <ul class="list-unstyled">
-            <li>Calle 2 de Obrajes</li>
-            <br />
-
-            <li>
-              <img src="img/image.png" alt="Ubicación" class="img-fluid" />
-            </li>
-          </ul>
-        </div>
-        <!-- Posición derecha -->
-        <div class="col-md-4 text-md-end">
-          <img src="img/ucb-banner.png" alt="Imagen institucional" class="img-fluid mb-3" />
-          <p>
-            © 2024 Universidad Católica Boliviana. Todos los derechos
-            reservados.
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
