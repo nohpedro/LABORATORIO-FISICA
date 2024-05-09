@@ -1,5 +1,5 @@
 from rest_framework import permissions
-from rest_framework.request import Request
+
 
 from django.contrib.auth import models as Models
 
@@ -8,8 +8,10 @@ from django.db import models
 
 from django.utils.translation import gettext_lazy as _
 
-LAB_ADMIN = 'AdministradorLaboratorio'
-LAB_ASSIST = 'AsistenteLaboratorio'
+
+
+
+
 
 class Role(Models.AbstractBaseUser, Models.PermissionsMixin):
     """User roles in the system"""
@@ -54,6 +56,7 @@ class RolePermissionsMixin(Models.PermissionsMixin):
         return super_perm or self.role.has_perm(perm, obj)
 
 
+
 def getDBPermission(db_permission):
 
     class DBPermissionHandler(permissions.BasePermission):
@@ -67,10 +70,3 @@ def getDBPermission(db_permission):
     return  DBPermissionHandler
 
 
-class IsLabAdmin(permissions.BasePermission):
-
-    def has_permission(self, request, view):
-        user = request.user
-        role = user.role
-
-        if(role.role_name == LAB_ADMIN): return True
