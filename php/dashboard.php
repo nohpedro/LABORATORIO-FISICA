@@ -12,12 +12,10 @@ require_once 'functions.php'; // Incluir el archivo de funciones para ejecutar c
 $query = "SELECT ca, nombre, carnet, hora_inicio_sesion FROM Administrador ORDER BY hora_inicio_sesion DESC LIMIT 5";
 $stmt = executeQuery($query);
 
-// Comprobar si se encontraron resultados
 if ($stmt->rowCount() > 0) {
     // Iniciar la tabla HTML
     echo "<table border='1'>";
     echo "<tr><th>CA</th><th>Nombre</th><th>Carnet</th><th>Hora de inicio de sesión</th></tr>";
-    // Iterar sobre los resultados y mostrar los datos en la tabla
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         echo "<tr>";
         echo "<td>" . $row['ca'] . "</td>";

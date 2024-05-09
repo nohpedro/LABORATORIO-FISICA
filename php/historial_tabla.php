@@ -1,26 +1,31 @@
 <?php
-require_once 'functions.php';
-// Mostrar el historial de inicio de sesión de los últimos usuarios
-$query = "SELECT ca, nombre, carnet, hora_inicio_sesion FROM Administrador WHERE hora_inicio_sesion IS NOT NULL ORDER BY hora_inicio_sesion DESC LIMIT 5";
-$stmt = executeQuery($query);
+// URL de la API en Docker
+$api_url = 'http://127.0.0.1:8000/api/user/list/';
 
-$historial = []; // Array para almacenar los datos del historial
+// Realizar una solicitud HTTP a la API
+$response = file_get_contents($api_url);
 
-if ($stmt->rowCount() > 0) {
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $historial[] = $row; // Agregar cada fila del historial al array
-    }
+// Comprobar el estado de la solicitud
+if ($response === FALSE) {
+    die('Error al hacer la solicitud a la API.');
 }
 
-// Convertir el array a formato JSON
-$json_response = json_encode($historial);
+// Decodificar la respuesta JSON
+$data = json_decode($response, TRUE);
 
-// Devolver la respuesta JSON
-header('Content-Type: application/json');
-echo $json_response;
+// Comprobar si la respuesta es válida
+if ($data === NULL) {
+    die('Error al decodificar la respuesta JSON.');
+}
+
+// Verificar si la respuesta contiene resultados
+if (empty($data['results'])) {
+    echo 'No se encontraron usuarios en la API.';
+} else {
+    // Mostrar los resultados obtenidos
+    echo 'Usuarios encontrados en la API:<br>';
+    foreach ($data['results'] as $user) {
+        echo "Email: " . $user['email'] . ", Nombre: " . $user['name'] . "<br>";
+    }
+}
 ?>
-
-
-
-
-
