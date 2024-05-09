@@ -7,8 +7,8 @@ from rest_framework.settings import api_settings
 from rest_framework import pagination
 
 from core.models import User
-
 from core.permissions import getDBPermission, IsLabAdmin
+from core.utils import LogInThrottle
 
 from django.contrib.auth import get_user_model
 
@@ -80,7 +80,7 @@ class CreateAdminView(generics.CreateAPIView):
 class CreateTokenView(ObtainAuthToken):
     """Create a new auth toker for user."""
     serializer_class = AuthTokenSerializer
-    throttle_classes = [throttling.AnonRateThrottle]
+    throttle_classes = [LogInThrottle]
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
 class ManageUserView(generics.RetrieveUpdateAPIView):
