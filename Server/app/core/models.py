@@ -84,11 +84,14 @@ def createRoles():
 
 
 def createSuperInstance():
-
     data = {
             'email' : 'admin@example.com',
             'password' : '#123#AndresHinojosa#123',
     }
+
+    admin = get_user_model().objects.filter(email = data['email']).first
+    if admin:
+        return
 
     get_user_model().objects.create_superuser(**data)
 
