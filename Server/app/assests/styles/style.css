@@ -1,0 +1,93 @@
+body {
+  background-color: #f4f4f4;
+  font-family: "Arial", sans-serif;
+}
+
+.contact-link {
+  font-size: 20px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #fff;
+  transform: translateX(15px);
+  font-size: 22px;
+}
+
+button[type="submit"] {
+  background-color: #ffc107;
+  color: #333;
+  padding: 12px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#loginForm,
+#registerForm {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+button[type="submit"] {
+  background-color: #ffc107;
+  color: #333;
+  padding: 12px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #e0a800;
+}
+
+@media (max-width: 768px) {
+  #loginForm,
+  #registerForm {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  button[type="submit"] {
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  #loginForm,
+  #registerForm {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  #loginForm,
+  #registerForm {
+    padding: 15px;
+    max-width: calc(100% - 20px);
+    margin: 10px;
+  }
+
+  button[type="submit"] {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
