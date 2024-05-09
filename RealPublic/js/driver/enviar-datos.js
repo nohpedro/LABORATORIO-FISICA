@@ -14,7 +14,10 @@ async function sendData(data) {
         const response = await fetch(apiUrl, {
             method: 'POST', // Método HTTP para la solicitud
             headers: {
-                'Content-Type': 'application/json', // Tipo de contenido de la solicitud
+                'Content-Type': 'application/json', 
+                
+                
+                // Tipo de contenido de la solicitud
                 // Incluye aquí otros headers como tokens de autenticación si son necesarios
             },
             body: JSON.stringify(data) // Convertir los datos del objeto JavaScript a JSON
