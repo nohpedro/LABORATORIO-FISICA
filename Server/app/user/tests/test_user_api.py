@@ -9,8 +9,11 @@ from rest_framework.test import APIClient
 from rest_framework import status
 from core.models import User
 
+from core.models import logIn
 
 from unittest.mock import patch
+
+from core.models import LAB_ADMIN, LAB_ASSIST
 
 CREATE_USER_URL = reverse("user:create")
 TOKEN_URL = reverse("user:token")
@@ -43,6 +46,8 @@ class PublicAdminAPITests(TestCase):
 
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
+        logIn(self.user)
+
 
 
     def test_create_user_success(self):
@@ -195,6 +200,7 @@ class PrivateUserAPITests(TestCase):
 
         self.client = APIClient()
         self.client.force_authenticate(user=self.user)
+        logIn(self.user)
 
     def test_retrieve_profile_success(self):
         """Test retrieving profine for logged in user."""
@@ -204,6 +210,8 @@ class PrivateUserAPITests(TestCase):
         self.assertEqual(res.data, {
                 'name' : self.user.name,
                 'email' : self.user.email,
+                'is_active' : True,
+                'role_field' : LAB_ADMIN,
             }
         )
 

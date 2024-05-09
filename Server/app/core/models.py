@@ -3,6 +3,7 @@ Database models
 """
 from django.conf import settings
 from django.db import models
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -12,7 +13,25 @@ from core.permissions import Role, RolePermissionsMixin
 
 from django.contrib.auth.password_validation import validate_password
 
-from core.permissions import LAB_ADMIN, LAB_ASSIST
+from django.utils import timezone
+
+from rest_framework.permissions import BasePermission
+
+LAB_ADMIN = 'AdministradorLaboratorio'
+LAB_ASSIST = 'AsistenteLaboratorio'
+
+
+class IsLabAdmin(BasePermission):
+
+    def has_permission(self, request, view):
+        user = request.user
+        role = user.role
+
+        if(user.is_superuser):
+            return True
+        if(role.role_name == LAB_ADMIN):
+            return True
+        return False
 
 class LabAdmin(Role):
     """Lab Administrator role"""
@@ -63,6 +82,15 @@ def createRoles():
     createAdminRole()
     createAssistantRole()
 
+
+def createSuperInstance():
+
+    data = {
+            'email' : 'admin@example.com',
+            'password' : '#123#AndresHinojosa#123',
+    }
+
+    get_user_model().objects.create_superuser(**data)
 
 def getAdminRole():
     try:
@@ -138,6 +166,70 @@ class User(AbstractBaseUser, RolePermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+
+
+
+
+
+class Session(models.Model):
+    user = models.ForeignKey(get_user_model(), null=False, blank=False, on_delete=models.CASCADE)
+    login_time = models.DateTimeField(auto_now_add=True)
+    logout_time =  models.DateTimeField(null=True, blank=True)
+
+
+def get_last_session(user):
+
+    if not user.is_authenticated:
+        return None
+
+    last_session = Session.objects.filter(user=user).order_by('-login_time').first()
+    if last_session:
+        return last_session
+    else:
+        return None
+
+def get_open_session(user):
+
+    last_session = get_last_session(user)
+
+    if not last_session: return None
+
+    if last_session.logout_time:
+        return None
+    else:
+        return last_session
+
+def isLogged(user):
+    if get_open_session(user):
+        return True
+    return False
+
+def logOut(user):
+    last_session = get_open_session(user)
+    if not last_session:
+        return
+
+    last_session.logout_time = timezone.now()
+    last_session.save()
+
+def logIn(user):
+
+    if not user.is_authenticated:
+        return
+    if get_open_session(user):
+        logOut(user)
+    Session.objects.create(user=user)
+
+
+
+class IsLogged(BasePermission):
+
+    def has_permission(self, request, view):
+
+        user = request.user
+        return isLogged(user) or user.is_superuser
+
+
 
 
 

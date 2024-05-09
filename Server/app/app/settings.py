@@ -46,8 +46,12 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'user',
     'pages',
+<<<<<<< HEAD
     'recipe',
     
+=======
+
+>>>>>>> 4a32c61ce2479974715c48d56e8f7e446859a394
 ]
 
 MIDDLEWARE = [
@@ -167,9 +171,20 @@ REST_FRAMEWORK = {
 
     'DEFAULT_THROTTLE_RATES': {
 
-        'anon': '6/min',
+        'anon': '10/min',
 
-        'user': '10/min'
+        'user': '20/min',
 
+        'login' : '3/min',
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'laboratoriofisicaucb@gmail.com'
+EMAIL_HOST_PASSWORD = '#password#labo'
+
+
+SESSION_COOKIE_AGE = 900
