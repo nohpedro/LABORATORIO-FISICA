@@ -21,7 +21,7 @@ document.querySelector('.login-form').addEventListener('submit', function(event)
           handleFormSubmission(); // Esperar rotación para enviar
       });
   } else {
-      icon.classList.add('login-icon-error');
+      
       setTimeout(() => {
           icon.classList.remove('login-icon-error');
           handleFormSubmission(); // Esperar después del error para enviar

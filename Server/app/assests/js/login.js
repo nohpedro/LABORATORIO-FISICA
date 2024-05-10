@@ -1,4 +1,9 @@
-document.getElementById('login-form').addEventListener('submit', function(event) {
+let form = document.getElementById('login-form')
+let icon = document.querySelector('.login-icon');
+
+
+let token = null
+form.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent form submission
   
   // Retrieve email and password values
@@ -26,13 +31,35 @@ document.getElementById('login-form').addEventListener('submit', function(event)
       },
       body: jsonData
   })
-  .then(response => response.json())
+  .then(response => {
+
+    if (response.status >= 200 && response.status < 300) {
+      // La solicitud fue exitosa (código de estado en el rango 200-299)
+      console.log('Solicitud exitosa');
+    } else {
+      // La solicitud falló con un código de estado diferente
+      console.error('Error en la solicitud:', response.status);
+    }
+
+    return response.json()
+  })
   .then(data => {
       // Handle API response
       console.log(data);
+
+      if('token' in data){
+        token = data['token']
+
+        window.location.replace("http://127.0.0.1:8000/page/public/index.html");
+      } 
+
+
+
+      alert("Login Existoso")
   })
   .catch(error => {
       // Handle errors
       console.error('Error:', error);
   });
 });
+

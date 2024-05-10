@@ -8,13 +8,3 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => console.error("Error loading the navbar:", error));
 });
 
-
-
-
-var token = ''
-
-var res = ''
-const requestBody = {
-    email: 'admin@example.com',
-    password: '#123#AndresHinojosa#123'
-  };

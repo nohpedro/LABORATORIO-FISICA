@@ -31,16 +31,36 @@ form.addEventListener('submit', function(event) {
       },
       body: jsonData
   })
-  .then(response => response.json())
+  .then(response => {
+
+    if (response.status >= 200 && response.status < 300) {
+      // La solicitud fue exitosa (código de estado en el rango 200-299)
+      console.log('Solicitud exitosa');
+    } else if(response.status == 429) {
+      // La solicitud falló con un código de estado diferente
+      alert('Muchos intentos intente de nuevo en un minuto');
+    }
+    else{
+      alert('Contraseña incorrecta');
+    }
+
+    return response.json()
+  })
   .then(data => {
       // Handle API response
       console.log(data);
 
       if('token' in data){
         token = data['token']
+
+        window.location.replace("http://127.0.0.1:8000/page/public/index.html");
+
+        
+      alert("Login Existoso")
       } 
 
-      alert("Login Existoso")
+
+
   })
   .catch(error => {
       // Handle errors
