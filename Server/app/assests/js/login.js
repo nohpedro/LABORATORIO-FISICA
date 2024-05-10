@@ -1,24 +1,38 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("loginForm");
+document.getElementById('login-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+  
+  // Retrieve email and password values
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const formData = new FormData(form);
+  // Create JSON object
+  var data = {
+      email: email,
+      password: password
+  };
 
-    fetch("../php/login.php", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        const cleanData = data.trim(); // Elimina espacios en blanco al inicio y al final
-        console.log(cleanData); // Verifica los datos limpios
-        if (cleanData.includes("Bienvenido")) {
-          window.location.href = "dashboard.html";
-        } else {
-          alert(cleanData);
-        }
-      })
-      .catch((error) => console.error("Error:", error));
+  // Convert JSON object to string
+  var jsonData = JSON.stringify(data);
+
+  // Log JSON data (for demonstration)
+  console.log(jsonData);
+
+  // Send HTTP request with JSON data to your API endpoint
+  // Replace 'your-api-endpoint' with the actual URL of your API endpoint
+  fetch('http://127.0.0.1:8000/api/user/token/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: jsonData
+  })
+  .then(response => response.json())
+  .then(data => {
+      // Handle API response
+      console.log(data);
+  })
+  .catch(error => {
+      // Handle errors
+      console.error('Error:', error);
   });
 });
