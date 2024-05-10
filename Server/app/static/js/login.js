@@ -1,3 +1,7 @@
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("loginForm");
 
@@ -5,7 +9,17 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     const formData = new FormData(form);
 
-    fetch("../php/login.php", {
+    var res = "";
+    var token ="";
+    const apiToken = 'http://127.0.0.1:8000/api/user/token/';
+    var requestBody = {
+      email: 'admin@example.com',
+      password: '#123#AndresHinojosa#123'
+    }
+
+
+
+    fetch(apiToken, {
       method: "POST",
       body: formData,
     })

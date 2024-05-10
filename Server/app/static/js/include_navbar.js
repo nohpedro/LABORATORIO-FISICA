@@ -10,9 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+// declarar TOKEN, Respuesta y Request Json
 var token = ''
-
 var res = ''
 const requestBody = {
     email: 'admin@example.com',
@@ -20,7 +19,7 @@ const requestBody = {
   };
 
 
-
+// Funcion Fetch para validar datos
 fetch('http://127.0.0.1:8000/api/user/token/', {
   method: 'POST',
   headers: {

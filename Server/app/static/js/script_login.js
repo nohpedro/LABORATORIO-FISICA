@@ -1,9 +1,14 @@
 document.querySelector('.login-form').addEventListener('submit', function(event) {
   event.preventDefault(); // Prevenir el envío inmediato 
+
+  const userInput = this.querySelector('input[type="email"]');
+  const user = userInput.value;
   const passwordInput = this.querySelector('input[type="password"]');
   const password = passwordInput.value;
   const icon = document.querySelector('.login-icon');
   const form = this;
+
+    
 
   // Función para manejar el final de cualquier animación y enviar el formulario
   function handleFormSubmission() {
