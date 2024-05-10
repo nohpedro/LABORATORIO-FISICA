@@ -186,7 +186,7 @@ SESSION_COOKIE_AGE = 900
 
 
 
-STATIC_URL = '/static/'
+STATIC_URL = '/page/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
