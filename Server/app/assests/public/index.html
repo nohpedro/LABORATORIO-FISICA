@@ -1,142 +1,344 @@
-+<!DOCTYPE html>
++
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="styles/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <script src="../js/include_navbar.js"></script>
 
-    <title>Página de Física</title>
-  </head>
-  <body>
-    <div class="container-fluid">
-      <div
-        id="carouselExample"
-        class="carousel slide d-flex align-items-center justify-content-center"
-      >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <script src="../js/include_navbar.js"></script>
+
+  <title>Página de Física</title>
+</head>
+
+<body class = "hdp">
+
+  <div class="container">
+    <div id="pagina-de-inicio">
+      <h1 class="display-1 text-center">Pagina de Inicio</h1>
+      <br>
+    </div>
+
+    <section>
+      <div id="carouselExample" class="carousel slide d-flex align-items-center justify-content-center">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img
-              src="img/welcome3-img.png"
-              class="img-fluid d-block mx-auto"
-              alt="..."
-            />
+            <!-- <img src="img/banner1.jpg" class="img-fluid d-block mx-auto" alt="..." /> -->
+            <div class="container text-center">
+              <div class="row">
+                <!-- Columna para la imagen, que se coloca arriba en pantallas pequeñas -->
+                <div class="col-md-4 col-12">
+                  <img src="../public/img/ucb.png" alt="Descripción de la imagen" class="img-fluid">
+                </div>
+                <!-- Columna para el texto, que sigue a la imagen en pantallas pequeñas -->
+                <div class="col-md-8 col-12">
+                  <h1>Bienvenido</h1>
+                  <p>En el Laboratorio de la Universidad Catolica Boliviana, esatmos comprometidos con al excelencia
+                    academica y
+                    la investigacion.</p>
+                  <p>Nuestro Laboratorio ofrece una gama de materiales y recursos para apoyar el desarrollo de proyectos
+                    cientificos y academicos.</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="carousel-item">
-            <img
-              src="img/objective-img.png"
-              class="img-fluid d-block mx-auto"
-              alt="..."
-            />
+            <img src="img/banner2.jpg" class="img-fluid d-block mx-auto" alt="..." />
           </div>
           <div class="carousel-item">
-            <img
-              src="img/welcomeotroimg.png"
-              class="img-fluid d-block mx-auto"
-              alt="..."
-            />
+            <img src="img/banner3.jpg" class="img-fluid d-block mx-auto" alt="..." />
           </div>
         </div>
-
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="next"
-        >
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden"></span>
+          <span class="visually-hidden">
+            << /span>
         </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="next"
-        >
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">></span>
         </button>
       </div>
-    </div>
+  </div>
+  </section>
 
-    <footer class="bg-dark text-light py-5">
-      <div class="container">
-        <div class="row">
-          <!-- Posición izquierda -->
-          <div class="col-md-4">
-            <h3><i class="bi bi-person-circle"></i> Contacto:</h3>
-            <br />
-            <ul class="list-unstyled">
-              <li>
-                <a href="#" class="contact-link"
-                  ><i class="bi bi-facebook"></i> Página de Facebook</a
-                >
-              </li>
-              <li>
-                <a href="#" class="contact-link"
-                  ><i class="bi bi-instagram"></i> Página de Instagram</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://www.google.com/intl/es/gmail/about/"
-                  class="contact-link"
-                  ><i class="bi bi-envelope"></i> Correo</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://www.whatsapp.com/?lang=es_LA"
-                  class="contact-link"
-                  ><i class="bi bi-whatsapp"></i> Whatsapp</a
-                >
-              </li>
-            </ul>
+  <br>
+
+<!-- Parte del cristian -->
+<div class="container">
+  <main class="main-content">
+    <section class="container container-features">
+      <div class="card-feature">
+        <i class="fa-solid fa-plane-up"></i>
+        <div class="feature-content">
+          <span>Equipos actualizados</span>
+        </div>
+      </div>
+      <div class="card-feature">
+        <i class="fa-solid fa-wallet"></i>
+        <div class="feature-content">
+          <span>Entrega inmediata</span>
+        </div>
+      </div>
+      <div class="card-feature">
+        <i class="fa-solid fa-gift"></i>
+        <div class="feature-content">
+          <span>Mejores Infumentarias de trabajo</span>
+        </div>
+      </div>
+      <div class="card-feature">
+        <i class="fa-solid fa-headset"></i>
+        <div class="feature-content">
+          <span>Servicio al cliente 8:00am a 9;00pm</span>
+        </div>
+      </div>
+    </section>
+  
+    <section class="container top-categories">
+      <h1 class="heading-1">Categorías</h1>
+      <div class="container-categories">
+        <div class="card-category category-moca">
+          <p>Productos de prestamo</p>
+          <span>Ver más</span>
+        </div>
+        <div class="card-category category-expreso">
+          <p>Aulas disponibles</p>
+          <span>Ver más</span>
+        </div>
+        <div class="card-category category-capuchino">
+          <p>Ayuda de servicio</p>
+          <span>Ver más</span>
+        </div>
+      </div>
+    </section>
+  
+    <section class="container top-products">
+      <h1 class="heading-1">Mejores Productos</h1>
+  
+      <div class="container-options">
+        <span class="active">Destacados</span>
+        <span>Más recientes</span>
+        <span>Mejores Vendidos</span>
+      </div>
+  
+      <div class="container-products">
+        <!-- Producto 1 -->
+        <div class="card-product">
+          <div class="container-img">
+            <img src="img/osciloscopio.jpeg" alt="Osciloscopio" />
+            <div class="button-group">
+              <span>
+                <i class="fa-regular fa-eye"></i>
+              </span>
+              <span>
+                <i class="fa-regular fa-heart"></i>
+              </span>
+              <span>
+                <i class="fa-solid fa-code-compare"></i>
+              </span>
+            </div>
           </div>
-
-          <!-- Posición centro -->
-          <div class="col-md-4">
-            <h3><i class="bi bi-geo-alt-fill"></i> Dirección:</h3>
-
-            <ul class="list-unstyled">
-              <li>Calle 2 de Obrajes</li>
-              <br />
-
-              <li>
-                <img src="img/image.png" alt="Ubicación" class="img-fluid" />
-              </li>
-            </ul>
+          <div class="content-card-product">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </div>
+            <h3>Osciloscopio</h3>
+            <span class="add-cart">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </span>
+            <p class="unidades">10 </span></p>
           </div>
-          <!-- Posición derecha -->
-          <div class="col-md-4 text-md-end">
+        </div>
+        <!-- Producto 2 -->
+        <div class="card-product">
+          <div class="container-img">
             <img
-              src="img/ucb-banner.png"
-              alt="Imagen institucional"
-              class="img-fluid mb-3"
+              src="img/fuente.jpeg"
+              alt="Fuente.jpeg"
             />
-            <p>
-              © 2024 Universidad Católica Boliviana. Todos los derechos
-              reservados.
-            </p>
+            <div class="button-group">
+              <span>
+                <i class="fa-regular fa-eye"></i>
+              </span>
+              <span>
+                <i class="fa-regular fa-heart"></i>
+              </span>
+              <span>
+                <i class="fa-solid fa-code-compare"></i>
+              </span>
+            </div>
+          </div>
+          <div class="content-card-product">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </div>
+            <h3>Fuente</h3>
+            <span class="add-cart">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </span>
+            <p class="unidades">7 </span></p>
+          </div>
+        </div>
+        <!--  -->
+        <div class="card-product">
+          <div class="container-img">
+            <img
+              src="https://ambar-lab.com/wp-content/uploads/2023/03/Nuevos-reactivos.jpeg"
+              alt="Generador"
+            />
+            <div class="button-group">
+              <span>
+                <i class="fa-regular fa-eye"></i>
+              </span>
+              <span>
+                <i class="fa-regular fa-heart"></i>
+              </span>
+              <span>
+                <i class="fa-solid fa-code-compare"></i>
+              </span>
+            </div>
+          </div>
+          <div class="content-card-product">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <h3>Generador</h3>
+            <span class="add-cart">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </span>
+            <p class="unidades">8</p>
+          </div>
+        </div>
+        <!--  -->
+        <div class="card-product">
+          <div class="container-img">
+            <img src="img/aulac203.jpeg" alt="Aula 203" />
+            <div class="button-group">
+              <span>
+                <i class="fa-regular fa-eye"></i>
+              </span>
+              <span>
+                <i class="fa-regular fa-heart"></i>
+              </span>
+              <span>
+                <i class="fa-solid fa-code-compare"></i>
+              </span>
+            </div>
+          </div>
+          <div class="content-card-product">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star"></i>
+            </div>
+            <h3>Aula 203</h3>
+            <span class="add-cart">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </span>
+            <p class="unidades">5</p>
           </div>
         </div>
       </div>
-    </footer>
+    </section>
+  
+    <section class="gallery">
+      <img
+        src="img/gallery1.jpg"
+        alt="Gallery Img1"
+        class="gallery-img-1"
+      /><img
+        src="img/gallery2.jpg"
+        alt="Gallery Img2"
+        class="gallery-img-2"
+      /><img
+        src="img/gallery3.jpg"
+        alt="Gallery Img3"
+        class="gallery-img-3"
+      /><img
+        src="img/gallery4.jpg"
+        alt="Gallery Img4"
+        class="gallery-img-4"
+      /><img
+        src="img/gallery5.jpg"
+        alt="Gallery Img5"
+        class="gallery-img-5"
+      />
+    </section>
+  </main>
+</div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+  
+
+<!-- Parte del Cristian (end) -->
+
+  <footer class="bg-dark text-light py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Posición izquierda -->
+        <div class="col-md-4">
+          <h3><i class="bi bi-person-circle"></i> Contacto:</h3>
+          <br/>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#" class="contact-link"><i class="bi bi-facebook"></i> Página de Facebook</a>
+            </li>
+            <li>
+              <a href="#" class="contact-link"><i class="bi bi-instagram"></i> Página de Instagram</a>
+            </li>
+            <li>
+              <a href="#" class="contact-link"><i class="bi bi-envelope"></i> Correo</a>
+            </li>
+            <li>
+              <a href="#" class="contact-link"><i class="bi bi-whatsapp"></i> Whatsapp</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Posición centro -->
+        <div class="col-md-4">
+          <h3><i class="bi bi-geo-alt-fill"></i> Dirección:</h3>
+
+          <ul class="list-unstyled">
+            <li>Calle 2 de Obrajes</li>
+            <br />
+
+            <li>
+              <img src="img/image.png" alt="Ubicación" class="img-fluid" />
+            </li>
+          </ul>
+        </div>
+        <!-- Posición derecha -->
+        <div class="col-md-4 text-md-end">
+          <img src="img/ucb-banner.png" alt="Imagen institucional" class="img-fluid mb-3" />
+          <p>
+            © 2024 Universidad Católica Boliviana. Todos los derechos
+            reservados.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
