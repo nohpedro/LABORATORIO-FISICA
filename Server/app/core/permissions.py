@@ -56,17 +56,17 @@ class RolePermissionsMixin(Models.PermissionsMixin):
         return super_perm or self.role.has_perm(perm, obj)
 
 
+    @classmethod
+    def getDBPermission(db_permission):
 
-def getDBPermission(db_permission):
+        class DBPermissionHandler(permissions.BasePermission):
+            def __init__(self):
+                self.db_permission = db_permission
 
-    class DBPermissionHandler(permissions.BasePermission):
-        def __init__(self):
-            self.db_permission = db_permission
+            def has_permission(self, request, view):
+                if not request.user.is_authenticated: return False
+                return request.user.has_perm(self.db_permission)
 
-        def has_permission(self, request, view):
-            if not request.user.is_authenticated: return False
-            return request.user.has_perm(self.db_permission)
-
-    return  DBPermissionHandler
+        return  DBPermissionHandler
 
 

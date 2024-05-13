@@ -13,6 +13,8 @@ from core.models import Session, getAdminRole, getAssistantRole, LAB_ADMIN, LAB_
 
 from rest_framework.exceptions import APIException
 
+from django.contrib.auth.models import AnonymousUser
+
 
 
 class NotValidRole(APIException):
@@ -115,14 +117,21 @@ class AuthTokenSerializer(serializers.Serializer):
         """Validate and authenticate the user."""
         email = attrs.get('email')
         password = attrs.get('password')
+
+
+        user = get_user_model().objects.filter(email = 'email')
+
+        if not user.exists():
+            attrs['user'] = AnonymousUser()
+
+
         user = authenticate(
             request=self.context.get('request'),
             username=email,
             password=password,
         )
         if not user:
-            msg = _('Unable to authenticate with provided credentials.')
-            raise serializers.ValidationError(msg, code='authorization')
+            return attrs
 
         attrs['user'] = user
         return attrs

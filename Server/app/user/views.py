@@ -11,8 +11,9 @@ from rest_framework import status
 from rest_framework import serializers
 
 from core.models import IsLabAdmin, IsLogged, getAdminRole, getAssistantRole
-from core.models import logIn, logOut, get_open_session, get_last_session
-from core.models import Session
+from django.contrib.auth import login, logout
+from django.contrib.auth.models import AnonymousUser
+from core.models import Session, logIn, logOut
 from core.utils import LogInThrottle
 
 from django.contrib.auth import get_user_model
@@ -57,7 +58,6 @@ class LogListPagination(pagination.CursorPagination):
 class ListUsersView(generics.ListAPIView):
     """List shows users in the api"""
     serializer_class = UserSerializer
-    authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated, IsLabAdmin, IsLogged]
     pagination_class = UserListPagination
     queryset = get_user_model().objects.all().order_by('email')
@@ -93,7 +93,6 @@ class ListUsersView(generics.ListAPIView):
 class ListUserLogsView(generics.ListAPIView):
     """List shows user logs in the api"""
     serializer_class = SessionSerializer
-    authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated, IsLabAdmin, IsLogged]
     pagination_class = LogListPagination
     queryset = Session.objects.all()
@@ -128,13 +127,11 @@ class ListUserLogsView(generics.ListAPIView):
 
 class CreateLabAssistantView(generics.CreateAPIView):
     serializer_class = AssistanSerializer
-    authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated, IsLabAdmin, IsLogged]
 
 
 class CreateLabAdminView(generics.CreateAPIView):
     serializer_class = AdminSerializer
-    authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated, IsLabAdmin, IsLogged]
 
 
@@ -148,32 +145,40 @@ class CreateTokenView(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-
-        token = Token.objects.filter(user=user).first()
-        if(token): token.delete()
-
-        key = Token.generate_key()
-        token = Token.objects.create(key = key, user = user)
-        token.save()
-        logIn(user)
-        return Response({'token': token.key})
 
 
-class LogoutView(generics.GenericAPIView):
-    serializer_class = serializers.Serializer
-    authentication_classes = [authentication.TokenAuthentication]
+        user = serializer.validated_data.get('user')
+
+        if not user:
+            return Response({'message'  : 'User is not registered'}, status=status.HTTP_404_NOT_FOUND)
+
+        if(isinstance(user, AnonymousUser)):
+            return Response({'message' : 'Unable to authenticate with provided credentials.'}, status= status.HTTP_401_UNAUTHORIZED)
+
+        login(request, user)
+        logIn(request.user)
+        response_serializer  = UserSerializer(instance = user)
+        #response_serializer.is_valid(raise_exception=True)
+        return Response(data = response_serializer.data, status=status.HTTP_200_OK)
+
+
+
+from django.views.decorators.csrf import csrf_exempt
+
+
+class LogoutView(generics.CreateAPIView):
+    serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated, IsLogged]
     def post(self, request, *args, **kwargs):
         # Perform logout logic here
-        logOut(request.user)  # Delete user's auth token
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        logout(request)  # Delete user's auth token
+        logOut(request.user)
+        return Response(status=status.HTTP_202_ACCEPTED)
 
 
 class UserProfileView(generics.RetrieveUpdateAPIView):
     """Manage the authenticated user."""
     serializer_class = UserSerializer
-    authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated, IsLogged]
 
     def get_object(self):
@@ -184,7 +189,6 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
 class ManageUserView(generics.RetrieveUpdateAPIView):
     """Edit user profiles"""
     serializer_class = ManageUserSerializer
-    authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated, IsLabAdmin, IsLogged]
 
     @extend_schema(parameters=[

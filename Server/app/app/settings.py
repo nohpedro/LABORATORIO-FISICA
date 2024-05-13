@@ -182,6 +182,11 @@ EMAIL_HOST_USER = 'laboratoriofisicaucb@gmail.com'
 EMAIL_HOST_PASSWORD = '#password#labo'
 
 
+
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+AUTHENTICATION_BACKENDS = ["django.contrib.auth.backends.ModelBackend"]
+
 SESSION_COOKIE_AGE = 900
 
 
@@ -191,3 +196,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assests')
+
+CSRF_COOKIE_NAME = 'csrftoken'
