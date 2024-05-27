@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-s$c^ea-ryrf$krzr*&xah&&&t80x&+upr@46&snh3gg(y@bagq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '10.0.2.2',
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
@@ -40,16 +44,20 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_password_validators',
     'django_password_validators.password_history',
+    'corsheaders',
     'core',
     'rest_framework',
     'rest_framework.authtoken',
     'drf_spectacular',
     'user',
-    'pages',
+    'item',
+    #'pages',
+    'sslserver',
 
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -130,21 +138,30 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
+
+LANGUAGE_CODE = 'es'
+
+LANGUAGES = [
+    ('es', 'Spanish'),
+    ('en', 'English'),
+]
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -191,10 +208,38 @@ SESSION_COOKIE_AGE = 900
 
 
 
-STATIC_URL = '/page/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+STATIC_URL = '/static/static/'
+MEDIA_URL = '/static/media/'
+
+MEDIA_ROOT = '/vol/web/media'
+STATIC_ROOT = '/vol/web/static'
+
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = [
+    'authorization',
+    'content-type',
+    'x-csrftoken',
+    'set-cookie',
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'assests')
+
+CORS_EXPOSE_HEADERS = ['Set-Cookie']
+
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000',
+                        'http://127.0.0.1:8000',
+                        'http://localhost:65420',
+                        'http://localhost:58315']  # Add your domain
+
 
 CSRF_COOKIE_NAME = 'csrftoken'
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SECURE = True  # Asegúrate de que sea False solo si no estás usando HTTPS
+CSRF_COOKIE_SAMESITE = 'None'  # 'None' si 'Lax' no funciona para tus necesidades
+
+# Configuración para la cookie de sesión
+SESSION_COOKIE_HTTPONLY = False
+SESSION_COOKIE_SECURE = True  # Asegúrate de que sea False solo si no estás usando HTTPS
+SESSION_COOKIE_SAMESITE = 'None'

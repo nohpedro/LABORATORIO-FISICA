@@ -45,7 +45,6 @@ class UserListPagination(pagination.CursorPagination):
 
 
 class LogListPagination(pagination.CursorPagination):
-    page_size = 10
     ordering = 'login_time'
     cursor_query_param = 'cursor'
     page_size_query_param = 'page_size'
@@ -103,7 +102,7 @@ class ListUserLogsView(generics.ListAPIView):
         queryset = self.queryset
         # Filter queryset based on the 'admin' parameter
         if not email:
-            raise MissingQueryParameterException(detail="The 'email' query parameter is missing.")
+            raise MissingQueryParameterException(detail="Se debe especificar el parámetro de email.")
 
         email = get_user_model().objects.normalize_email(email)
         user = get_object_or_404(get_user_model(), email = email)
@@ -150,10 +149,10 @@ class CreateTokenView(ObtainAuthToken):
         user = serializer.validated_data.get('user')
 
         if not user:
-            return Response({'message'  : 'User is not registered'}, status=status.HTTP_404_NOT_FOUND)
+            return Response({'message' : 'Credenciales inválidos'}, status=status.HTTP_401_UNAUTHORIZED)
 
         if(isinstance(user, AnonymousUser)):
-            return Response({'message' : 'Unable to authenticate with provided credentials.'}, status= status.HTTP_401_UNAUTHORIZED)
+            return Response({'message'  : 'El usuario no está registrado'}, status= status.HTTP_404_NOT_FOUND)
 
         login(request, user)
         logIn(request.user)
@@ -171,8 +170,13 @@ class LogoutView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated, IsLogged]
     def post(self, request, *args, **kwargs):
         # Perform logout logic here
+        if(isinstance(request.user, AnonymousUser)):
+            return Response(status=status.HTTP_412_PRECONDITION_FAILED)
+
         logout(request)  # Delete user's auth token
         logOut(request.user)
+
+
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
@@ -203,13 +207,20 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
         """Retrieve and return the user by its email."""
         email_param = self.request.query_params.get('email', None)
         if not email_param:
-            raise MissingQueryParameterException(detail="The 'email' query parameter is missing.")
+            raise MissingQueryParameterException(detail="Ingrese el parámetro de email")
         return get_object_or_404(get_user_model(), email = email_param)
+
+
+
+class HealthCheck(generics.RetrieveAPIView):
+    def get(self, request, *args, **kargs):
+        return Response({'':'OK'}, status=status.HTTP_200_OK)
+
 
 
 
 class MissingQueryParameterException(exceptions.APIException):
     status_code = 400
-    default_detail = 'A required query parameter is missing.'
+    default_detail = 'Falta un parámetro query.'
     default_code = 'missing_query_parameter'
 
